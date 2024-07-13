@@ -1,0 +1,74 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.productos{
+    margin-top: 400px;
+
+    .producto__grid{
+        @include m.grid(4,20px);
+
+        @include m.telefono{
+            @include m.grid(2,20px);
+        }
+
+        .producto{
+            @include m.telefono{
+                width: 170px;
+            }
+            .producto__container{
+                display: grid;
+                place-items: center;
+                background-color: v.$gris;
+                border-radius: 5px;
+
+                .imagen-container{
+                    .producto__img{
+                      width: 100%;
+                    }
+                }
+            }
+
+            .producto__info{
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+
+                .producto__precios{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+
+                    .producto__nombre,
+                    .producto__precio{
+                        font-weight: bold;
+                    }
+                }
+                .info{
+                    color: v.$borde;
+                    margin-bottom: 20px;
+                }
+                .estrella__img{
+                    width: 80px;
+                    margin-bottom: 20px;
+                }
+                .boton{
+                    display: block;
+                    color: v.$negro;
+                    border: solid 1px v.$negro;
+                    width: 120px;
+                    text-align: center;
+                    padding: 10px;
+                    border-radius: 20px;
+
+                    &:hover{
+                        background-color: v.$verde;
+                        color: v.$blanco;
+                    }
+                }
+            }
+
+            
+        }
+    }
+}

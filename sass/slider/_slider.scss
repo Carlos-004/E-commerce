@@ -1,0 +1,53 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.slider{
+    margin-top: 30px;
+    width: 100%;
+  
+
+    .slider__container{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        
+        .slider__slide{
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            position: relative;
+            transition-property:transform;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .one{
+            background-image: url("../../img/ps.webp");
+        }
+        .dos{
+            background-image: url("../../img/apple.jpg");
+        }
+        .tres{
+            background-image: url("../../img/NintendoSwitchLogo2_Entra.jpg");
+        }
+        .cuatro{
+            background-image: url("../../img/Sony-simbolo.jpg");
+        }
+    }
+}
+.swiper-button-next, .swiper-button-prev {
+    background-color: v.$blanco;
+    color: v.$negro;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: 900;
+}
+.swiper-pagination-bullet{
+   display: none;
+}

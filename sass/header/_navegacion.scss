@@ -1,0 +1,68 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+
+.barra{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @include m.telefono{
+        gap: 0;
+    }
+
+    .barra__container{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        .menu{
+            display: none;
+
+            @include m.telefono{
+                display: block;
+            }
+        }
+
+        .navegcion{
+            .navegcion__link{
+                @include m.telefono{
+                    display: none;
+                }
+                @include m.tablet{
+                    display: none;
+                }
+                @include m.laptop{
+                    font-size: 16px;
+                }
+                font-size: 14px;
+
+
+                padding: 10px;
+                color: v.$borde;
+                &:hover{
+                    border: solid 1px v.$verde-borde;
+                    color: v.$verde-color;
+                    border-radius: 4px;
+                    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+                }                
+            }
+
+            
+        }
+    }
+
+    .barra__input{
+        #buscar{
+            @include m.telefono{
+                width: 100%;
+            }
+            width: 300px;
+            border:none;
+            background-color: v.$gris;
+            border-radius: 4px;
+            padding: 5px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+        }
+    }
+}
