@@ -1,0 +1,28 @@
+@use "../base/variables" as v;
+
+.modal{
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgba(v.$gris-claro, 0.5);
+    z-index: 10;
+
+    .img-modal{
+        width: 600px;
+        height: 500px;
+        background-color: v.$gris-claro;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+    .boton{
+        background-color: v.$negro;
+        color: v.$blanco;
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}

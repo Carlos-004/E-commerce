@@ -58,6 +58,7 @@ function misProductos(productosFiltrados){
         imgProducto.setAttribute("src",`${element.img}`);
         imgProducto.setAttribute("alt",`${element.nombre}`)
         imgProducto.classList.add("producto__img");
+        imgProducto.addEventListener("click",() => modalProduct(element.id))
         pictureContainer.append(imgProducto);
         divProduct.append(pictureContainer);
 
@@ -111,7 +112,44 @@ function buscarProduct(){
     })
 }
 
+function modalProduct(Id){
+    const modalFiltrado = productos.find(i => i.id === Id);
 
+    const body = document.querySelector("body");
+    body.classList.add("overflow-hidden")
+
+    const caontainerModal = document.createElement("div");
+    caontainerModal.classList.add("modal");
+    caontainerModal.addEventListener("click",() => cerrarModal())
+    const modalImg = document.createElement("img");
+    modalImg.setAttribute("src",modalFiltrado.img);
+    modalImg.classList.add("img-modal");
+
+    const boton = document.createElement("button");
+    boton.classList.add("boton");
+    boton.innerText = "X";
+    boton.addEventListener("click",() =>{
+        modal.remove()
+    })
+
+    caontainerModal.append(modalImg);
+    caontainerModal.append(boton)
+    body.append(caontainerModal)
+
+
+    
+}
+
+function cerrarModal(){
+    const body = document.querySelector("body");
+    body.classList.remove("overflow-hidden");
+    
+    const modal = document.querySelector(".modal");
+    // modal.classLista.add("final")
+    setTimeout(() => {
+        modal?.remove();
+    }, 500);
+}
 
 buscarProduct()
 misProductos(productos)

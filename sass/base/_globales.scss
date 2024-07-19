@@ -7,6 +7,10 @@
 body{
     font-size: 16px;
     font-family: v.$text-global;
+
+    &.overflow-hidden {
+        overflow: hidden;
+    }
 }
 h1,h2,h3{
     font-family: v.$titulos;
