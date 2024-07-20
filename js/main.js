@@ -2,7 +2,18 @@ import "../sass/style.scss"
 
 const buscarProdutos = document.querySelector("#buscar");
 const productoContainer = document.querySelector(".producto__grid");
+const cardShoppin = document.querySelector(".card_img");
+const asideContainer = document.querySelector(".aside__container");
 
+cardShoppin.addEventListener("click", () => {
+
+    if (!asideContainer.classList.contains("activo")) {
+        asideContainer.classList.add("activo")
+    }else{
+        asideContainer.classList.remove("activo")
+    }
+    // asideContainer.classList.toggle("activo")
+});
 
 window.swiper = new Swiper({
     el:'.slider__container',
@@ -94,6 +105,7 @@ function misProductos(productosFiltrados){
         boton.setAttribute("href","#")
         boton.classList.add("boton");
         boton.innerText = "Add to Cart";
+        boton.addEventListener("click",() => agregarCar(element.id))
         divInfo.append(boton);
 
         articleProduct.append(divInfo)
@@ -110,6 +122,53 @@ function buscarProduct(){
         )
         misProductos(productosFiltrados)
     })
+}
+
+function agregarCar(ID) {
+    const agregarShoppinCard = productos.find(index => index.id === ID);
+
+    const asideDiv = document.createElement("div");
+    asideDiv.classList.add("asideconte");
+
+    const articleProduct = document.createElement("article");
+    articleProduct.classList.add("aside__producto");
+    asideDiv.append(articleProduct);
+
+    const containerImg = document.createElement("picture");
+    containerImg.classList.add("aside_picture");
+    articleProduct.append(containerImg);
+
+    const productoImg = document.createElement("img");
+    productoImg.classList.add("aside_img");
+    productoImg.setAttribute("src", `${agregarShoppinCard.img}`); // Corregido aquí
+    productoImg.setAttribute("alt", `${agregarShoppinCard.nombre}`);
+    containerImg.append(productoImg);
+
+    const asideInfoProduct = document.createElement("div");
+    asideInfoProduct.classList.add("aside__info");
+    articleProduct.append(asideInfoProduct);
+
+    const nombreProductos = document.createElement("p");
+    nombreProductos.classList.add("aside__nombre");
+    nombreProductos.innerText = `${agregarShoppinCard.nombre}`;
+    asideInfoProduct.append(nombreProductos);
+
+    const precioProductos = document.createElement("p");
+    precioProductos.classList.add("aside__precio");
+    precioProductos.innerText = `$${agregarShoppinCard.precio}`;
+    asideInfoProduct.append(precioProductos);
+
+    const asideClose = document.createElement("div");
+    asideClose.classList.add("close__producto");
+
+    const close = document.createElement("img");
+    close.setAttribute("src", "../img/icon-close.svg");
+    close.classList.add("close");
+    asideClose.append(close);
+
+    asideDiv.append(asideClose);
+
+    asideContainer.append(asideDiv);
 }
 
 function modalProduct(Id){

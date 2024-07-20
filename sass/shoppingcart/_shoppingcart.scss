@@ -1,0 +1,57 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.aside{
+    .aside__container{
+        position: absolute;
+        z-index: 10;
+        top: 74px;
+        right: 0;
+        background-color: v.$gris;
+        width: 400px;
+
+        @include m.telefono{
+            width: 100%;
+        }
+    }
+    .asideconte{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+}
+
+.aside__producto{
+    display: flex;
+    align-items: center;
+
+    .aside_picture{
+        .aside_img{
+            width: 180px;
+        }
+    }
+    .aside__info{
+        .aside__nombre{
+            margin-bottom: 10px;
+        }
+        .aside__nombre,
+        .aside__precio{
+            font-weight: bold;
+        }
+    }
+}
+.close__producto{
+    background-color: v.$negro;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .close{
+        width: 20px;
+        height: 20px;
+    }
+}
